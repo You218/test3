@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VehicleDataService } from 'src/app/vehicle.service';
+import { ModalService } from 'src/app/Services/modal.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -18,7 +19,7 @@ export class ScheduleReportModalComponent implements OnInit {
   buttonValue = '+Add';
   reportForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private vehicleService: VehicleDataService, @Inject(MatDialogRef) private dialogRef: MatDialogRef<ScheduleReportModalComponent>) {
+  constructor(private fb: FormBuilder,private modalService : ModalService, private vehicleService: VehicleDataService, @Inject(MatDialogRef) private dialogRef: MatDialogRef<ScheduleReportModalComponent>) {
     this.reportForm = this.fb.group({
       fleet: [false],
       vehicle: [false],
@@ -43,8 +44,9 @@ export class ScheduleReportModalComponent implements OnInit {
   
 
   onCancel(): void {
+   this.modalService.goToNextStep(); 
+    this.dialogRef.close(); 
     this.reportForm.reset();
-     this.dialogRef.close();
   }
 
   onButtonClickVisible(): void {
@@ -74,6 +76,8 @@ export class ScheduleReportModalComponent implements OnInit {
     if (this.isNextButtonEnabled()) {
       console.log('Proceeding to the next step with form data:', this.reportForm.value);
       console.log('Selected emails:', this.emails);
+     this.modalService.goToNextStep(); 
+     this.dialogRef.close(); 
     }
   }
 

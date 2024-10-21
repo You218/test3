@@ -14,24 +14,32 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatRadioModule } from '@angular/material/radio';
+
+
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './Services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ScheduleReportModalComponent } from './dashboard/schedule-report-modal/schedule-report-modal.component';
+import { SecondModalComponent } from './dashboard/second-modal/second-modal.component';
+import { ModalService } from './Services/modal.service';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    ScheduleReportModalComponent
+    ScheduleReportModalComponent,
+    SecondModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-     MatDialogModule,
+    MatDialogModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
@@ -40,11 +48,13 @@ import { ScheduleReportModalComponent } from './dashboard/schedule-report-modal/
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatButtonToggleModule,
+    MatRadioModule,
     MatIconModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
