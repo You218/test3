@@ -1,55 +1,85 @@
 <div class="schedule-container">
   <div class="heading">
-      <h2 style="color: #242424; font-size: large;">Schedule Reports</h2>
-      <button (click)="onCancel()">X</button>
+      <h2 style="color: #242424; font-size: large">Schedule Reports</h2>
+    <div>
+      <button class="x" (click)="onCancel()">X</button>
+    </div>
   </div>
   <section class="selectOption" [formGroup]="reportForm">
-
-      <h4 style="color: #242424; font-size: medium;">Select Required Report Types</h4>
-      <p><mat-checkbox formControlName="fleet">Fleet Wise Report</mat-checkbox></p>
-      <p><mat-checkbox formControlName="vehicle" >Vehicle Wise Report</mat-checkbox></p>
-      <p><mat-checkbox formControlName="trip">Trip Wise Report</mat-checkbox></p>
-      <p><mat-checkbox formControlName="driving">Driving Scorecard Report</mat-checkbox></p>
+    <h4 style="color: #242424; font-size: medium">
+      Select Required Report Types
+    </h4>
+    <p>
+      <mat-checkbox formControlName="fleet">Fleet Wise Report</mat-checkbox>
+    </p>
+    <p>
+      <mat-checkbox formControlName="vehicle">Vehicle Wise Report</mat-checkbox>
+    </p>
+    <p><mat-checkbox formControlName="trip">Trip Wise Report</mat-checkbox></p>
+    <p>
+      <mat-checkbox formControlName="driving"
+        >Driving Scorecard Report</mat-checkbox
+      >
+    </p>
   </section>
+  <div>
 
-  <div *ngIf="showVehicleList" class="vehicle-container">
-      <h5 style="color: #242424;">Select Vehicles</h5>
-      <div *ngFor="let vehicle of vehicles">
-        <mat-checkbox >
-          <div class="vehicle-list">
-              <span><b>{{vehicle.registration_number}}</b></span>
-              <span>VIN:{{vehicle.vin}}</span>
-              <span>{{vehicle.lob_name}}</span>
-          </div>
+    <h5 style="color: #242424">Select Vehicles</h5>
+    <div *ngIf="showVehicleList" class="vehicle-container">
+    <div *ngFor="let vehicle of vehicles">
+      <div class="vehicle-list">
+      <mat-checkbox>
+          <p
+            ><b>{{ vehicle.registration_number }}</b></p
+          >
+          <p>VIN:{{ vehicle.vin }}</p>
+          <p>{{ vehicle.lob_name }}</p>
         </mat-checkbox>
       </div>
     </div>
-
+  </div>
+</div>
 
   <section class="email-section" [formGroup]="reportForm">
-      <div class="email-container">
-          <h4>Enter email ids</h4>
-          <div class="email-input-container" *ngIf="isButtonVisible">
-              <input type="email" formControlName="email" placeholder="Enter email">
-              <button class="add-email-button" [disabled]="!reportForm.get('email')?.valid || emails.length >= 5"
-                  [ngStyle]="{ backgroundColor: 'blue', color: 'white' }" (click)="addEmail()">Add</button>
-          </div>
+    <div class="email-container">
+      <h4>Enter email ids</h4>
+      <div class="email-input-container" *ngIf="isButtonVisible">
+        <input type="email" formControlName="email" placeholder="Enter email" />
+        <button
+          class="add-email-button"
+          [disabled]="!reportForm.get('email')?.valid || emails.length >= 5"
+          [ngStyle]="{ backgroundColor: 'blue', color: 'white' }"
+          (click)="addEmail()"
+        >
+          Add
+        </button>
       </div>
-      <button class="add-email-button" [disabled]="emails.length >= 5" [ngStyle]="{ color: 'blue' }"
-          (click)="onButtonClickVisible()"><b>{{buttonValue}}</b></button>
+    </div>
+    <button
+      class="add-email-button"
+      [disabled]="emails.length >= 5"
+      [ngStyle]="{ color: 'blue' }"
+      (click)="onButtonClickVisible()"
+    >
+      <b>{{ buttonValue }}</b>
+    </button>
   </section>
 
   <div class="email-textarea">
-      <div *ngFor="let email of emails; let i = index" class="email-item">
-          <span>{{ email }}</span>
-          <button class="remove-button" (click)="removeEmail(i)">X</button>
-      </div>
+    <div *ngFor="let email of emails; let i = index" class="email-item">
+      <span>{{ email }}</span>
+      <button class="remove-button" (click)="removeEmail(i)">X</button>
+    </div>
   </div>
 
   <div class="button-container">
-      <button class="cancel-button" (click)="onCancel()">Cancel</button>
-      <button class="next-button"
-              [disabled]="!isNextButtonEnabled()"
-              (click)="onNext()">Next ></button>
-    </div>
+    <button class="cancel-button" (click)="onCancel()">Cancel</button>
+    <button
+      class="next-button"
+      [disabled]="!isNextButtonEnabled()"
+      (click)="onNext()"
+    >
+      Next >
+    </button>
+  </div>
 </div>

@@ -12,7 +12,8 @@ export class DashboardComponent {
 
   openScheduleReportModal(): void {
     const dialogRef = this.dialog.open(ScheduleReportModalComponent, {
-      width: '500px',
+      // width: '500px',
+      height: '500px',
       data: {}
     });
   }

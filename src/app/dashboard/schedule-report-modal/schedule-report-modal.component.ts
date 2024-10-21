@@ -40,6 +40,8 @@ export class ScheduleReportModalComponent implements OnInit {
     });
   }
 
+  
+
   onCancel(): void {
     this.reportForm.reset();
      this.dialogRef.close();
