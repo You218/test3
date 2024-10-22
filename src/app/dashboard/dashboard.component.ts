@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ScheduleReportModalComponent } from './schedule-report-modal/schedule-report-modal.component';
 import { SecondModalComponent } from './second-modal/second-modal.component';
-import { ModalService } from '../Services/modal.service'; 
+import { ModalService } from '../Services/modal.service';
 
 
 @Component({
@@ -24,7 +24,10 @@ export class DashboardComponent implements OnInit {
 
   openModal(step: number) {
     if (step === 1) {
-      this.dialog.open(ScheduleReportModalComponent);
+      this.dialog.open(ScheduleReportModalComponent,{
+        height: '600px',
+        width: '670px',
+      });
     } else if (step === 2) {
       this.dialog.open(SecondModalComponent);
     }
