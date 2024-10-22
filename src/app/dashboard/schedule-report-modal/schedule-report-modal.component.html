@@ -15,7 +15,7 @@
       <p><mat-checkbox formControlName="driving">Driving Scorecard Report</mat-checkbox></p>
     </section>
 
-    <div *ngIf="showVehicleList">
+    <div *ngIf="showVehicleList" id="avengers">
       <h5 style="color: #242424">Select Vehicles</h5>
       <div class="vehicle-container">
         <div id="vehicleFilters">
@@ -40,8 +40,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Email input section -->
     <section class="email-section">
       <div class="email-container">
         <h4>Enter email ids</h4>
@@ -52,9 +50,7 @@
       </div>
       <button class="add-email-button" [disabled]="emails.length >= 5" (click)="onButtonClickVisible()">{{ buttonValue }}</button>
     </section>
-  </div> <!-- Closing formGroup div -->
-
-  <!-- Email list display -->
+  </div>
   <div class="email-textarea">
     <div *ngFor="let email of emails; let i = index" class="email-item">
       <span>{{ email }}</span>

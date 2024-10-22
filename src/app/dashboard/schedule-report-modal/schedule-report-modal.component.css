@@ -163,7 +163,18 @@ input{
   flex-wrap: wrap;
   margin-right:20px ;
 }
-
+#vehicleFilters{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+#avengers{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+}
 .vehicle-container h4 {
   margin-bottom: 10px;
 }
